@@ -1,0 +1,11 @@
+
+body {
+    background-color: #FFFFFF;
+}
+
+#logo {
+    padding: 20px;
+    color: #00aced;
+    font-size:30px;
+    font-weight: 800;
+}
