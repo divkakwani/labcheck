@@ -9,3 +9,11 @@ body {
     font-size:30px;
     font-weight: 800;
 }
+
+#content-box > div {
+    display: none;
+}
+#content-box > div#menuitem1 {
+    display: block;
+}
+

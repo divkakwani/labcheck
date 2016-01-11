@@ -5,6 +5,16 @@
     <title>LabCheck</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='semantic-ui/semantic.min.css') }}"/>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/mystyle.css') }}"/>
+
+    <script language='javascript'>
+        $(document).ready(function(){
+            $('.ui.accordion').accordion();
+        });
+        $(document).ready(function(){
+            $('.ui.dropdown').dropdown();
+        });
+    </script>
+
 </head>
 <body>
 
