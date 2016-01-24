@@ -7,6 +7,7 @@ var Admin = React.createClass({
             "div",
             { className: "ui grid" },
             React.createElement(TopMenu, null),
+            React.createElement(TabbedDisplayBox, null),
             React.createElement(Footer, null)
         );
     }

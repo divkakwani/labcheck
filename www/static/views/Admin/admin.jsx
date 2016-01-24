@@ -5,6 +5,7 @@ var Admin = React.createClass({
         return (
             <div className="ui grid">
                 <TopMenu />
+                <TabbedDisplayBox />
                 <Footer />
             </div>
         );
