@@ -17,7 +17,7 @@ def display_student_page():
 
 @app.route('/admin')
 def display_admin_page():
-    return render_template('pages/admin/admin.html')
+    return render_template('admin.html')
 
 
 if __name__ == '__main__':
