@@ -8,28 +8,23 @@ var TopMenu = React.createClass({
             { className: "ui blue inverted padded segment", style: { width: '100%' } },
             React.createElement(
                 "div",
-                { className: "ui container" },
+                { className: "ui container", style: { margin: "10px" } },
                 React.createElement(
-                    "span",
-                    { style: { float: 'left' } },
-                    React.createElement(
-                        "h3",
-                        { className: "ui header", style: { color: 'white' } },
-                        " LabCheck "
-                    )
-                ),
-                React.createElement(
-                    "span",
-                    { style: { float: 'right' } },
+                    "div",
+                    { className: "ui secondary menu" },
                     React.createElement(
                         "div",
-                        { className: "ui divided relaxed horizontal list" },
+                        { className: "item" },
                         React.createElement(
-                            "div",
-                            { className: "item" },
-                            " ",
-                            React.createElement("i", { className: "ui large github icon" })
+                            "h2",
+                            { style: { color: 'white' } },
+                            " LabCheck "
                         )
+                    ),
+                    React.createElement(
+                        "div",
+                        { className: "right menu" },
+                        React.createElement(StudentDashboard, { name: "Divyanshu" })
                     )
                 )
             )

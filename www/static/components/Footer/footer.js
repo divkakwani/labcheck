@@ -1,27 +1,40 @@
 
 var Footer = React.createClass({
-    displayName: "Footer",
+    displayName: 'Footer',
 
     render: function () {
+
+        style = { fontSize: '50px', lineHeight: '30px' };
+
         return React.createElement(
-            "div",
-            { className: "ui blue inverted right aligned vertical footer segment", style: { width: '100%' } },
+            'div',
+            { className: 'ui blue inverted segment', style: { width: '100%' } },
             React.createElement(
-                "div",
-                { className: "ui divided relaxed horizontal list" },
+                'div',
+                { className: 'ui center aligned container' },
                 React.createElement(
-                    "div",
-                    { className: "item" },
-                    " ",
-                    React.createElement("i", { className: "ui mail icon" }),
-                    " divkakwani@gmail.com "
-                ),
-                React.createElement(
-                    "div",
-                    { className: "item" },
-                    " ",
-                    React.createElement("i", { className: "ui copyright icon" }),
-                    " Divyanshu Kakwani, 2016"
+                    'div',
+                    { className: 'ui very relaxed very padded divided horizontal list', style: style },
+                    React.createElement(
+                        'div',
+                        { className: 'item' },
+                        ' ',
+                        React.createElement('i', { className: 'ui large github icon' })
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'item' },
+                        ' ',
+                        React.createElement('i', { className: 'ui mail icon' }),
+                        ' divkakwani@gmail.com '
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'item' },
+                        ' ',
+                        React.createElement('i', { className: 'ui copyright icon' }),
+                        ' Divyanshu Kakwani, 2016'
+                    )
                 )
             )
         );
