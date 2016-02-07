@@ -8,11 +8,11 @@
     <script type="text/javascript">
         $(document).ready(function() {
             $('.button')
-                    .popup({
-                        inline: true,
-                        position: 'bottom left',
-                        on: 'click'
-                    });
+              .popup({
+                inline: true,
+                  position: 'bottom left',
+                  on: 'click'
+                });
 
             $('.menu .item').tab();
             $('.ui.dropdown').dropdown();
@@ -23,18 +23,19 @@
 
 <body>
 
-    <div id="admin"></div>
+    <div id="student"></div>
 
 
         <script src="{{ url_for('static', filename='react/react.js') }}"></script>
         <script src="{{ url_for('static', filename='react/react-dom.js') }}"></script>
 
         <script type="text/javascript" src="{{ url_for('static', filename='components/Footer/footer.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='components/Announcement/announcement.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='components/StudentDashboard/studentdashboard.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='components/TopMenu/topmenu.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='components/Handouts/handouts.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='components/TabbedDisplayBox/tabbeddisplaybox.js') }}"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='views/Admin/admin.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='views/Student/student.js') }}"></script>
 
 
 </body>
