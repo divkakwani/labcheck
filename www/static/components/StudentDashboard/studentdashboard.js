@@ -9,20 +9,6 @@ var StudentDashboard = React.createClass({
             React.createElement(
                 "div",
                 { className: "item" },
-                React.createElement(
-                    "div",
-                    { clasName: "ui blue button" },
-                    React.createElement("i", { className: "ui large announcement icon" })
-                ),
-                React.createElement(
-                    "div",
-                    { className: "floating ui red label" },
-                    "12"
-                )
-            ),
-            React.createElement(
-                "div",
-                { className: "item" },
                 this.props.name
             )
         );

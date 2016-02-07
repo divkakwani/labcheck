@@ -15,27 +15,23 @@ var TabbedDisplayBox = React.createClass({
         var that = this;
         return React.createElement(
             "div",
-            { className: "ui two column stackable grid container" },
+            { className: "ui stackable grid" },
             React.createElement(
                 "div",
-                { className: "four wide column" },
-                React.createElement(
-                    "div",
-                    { className: "ui vertical secondary menu" },
-                    React.Children.map(this.props.children, function (child) {
-                        return React.createElement(
-                            "a",
-                            { className: "item", onClick: function () {
-                                    that.setState({ activeTab: child.props.id });
-                                } },
-                            child.props.label
-                        );
-                    })
-                )
+                { className: "row", style: { width: "100%" } },
+                React.Children.map(this.props.children, function (child) {
+                    return React.createElement(
+                        "div",
+                        { className: "column", style: { width: "200px" }, onClick: function () {
+                                that.setState({ activeTab: child.props.id });
+                            } },
+                        child.props.label
+                    );
+                })
             ),
             React.createElement(
                 "div",
-                { className: "column" },
+                { className: "centered row" },
                 React.Children.map(this.props.children, function (child) {
                     if (child.props.id == that.state.activeTab) return child.props.children;else return;
                 })
