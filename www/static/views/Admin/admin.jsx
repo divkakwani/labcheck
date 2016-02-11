@@ -6,7 +6,7 @@ var Admin = React.createClass({
             <div>
                 <TopMenu />
 
-                <div className="ui container" style={{marginTop: "3em", minHeight: "400px;"}}>
+                <div className="ui container" style={{marginTop: "3em", minHeight: "800px;"}}>
                     <div className="ui secondary menu grid">
                         <a className="item active" data-tab="first">Announcements</a>
                         <a className="item" data-tab="second">Program Database</a>
@@ -17,7 +17,7 @@ var Admin = React.createClass({
                     </div>
 
                     <div style={{maxWidth: "500px"}}>
-                    <div className="ui tab padded basic segment" data-tab="first">
+                    <div className="ui active tab padded basic segment" data-tab="first">
                         <h4 className="ui blue header"> Make an announcement </h4>
                         <form className="ui form" action="/admin" method="post">
                             <div className="ui field">
@@ -76,7 +76,24 @@ var Admin = React.createClass({
                     </div>
 
                     <div className="ui tab padded basic segment" data-tab="fifth">
+                        <h4 className="ui blue header">Handouts List</h4>
                         <Handouts/>
+                        <div className="ui divider"></div>
+                        <h4 className="ui blue header">Add handouts</h4>
+                        <form className="ui form" method="post" encType="multipart/form-data" action="/admin">
+                            <div className="field">
+                                <label>Name</label>
+                                <input type="text" className="ui text" name="name"/>
+                            </div>
+                            <div className="field">
+                                <label>Description</label>
+                                <textarea name="desc"></textarea>
+                            </div>
+                            <div className="field">
+                                <input type="file" name="file"/>
+                            </div>
+                            <button className="ui blue button">Post the handout</button>
+                        </form>
                     </div>
 
                     <div className="ui tab padded basic segment" data-tab="sixth">

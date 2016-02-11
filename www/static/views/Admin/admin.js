@@ -9,7 +9,7 @@ var Admin = React.createClass({
             React.createElement(TopMenu, null),
             React.createElement(
                 "div",
-                { className: "ui container", style: { marginTop: "3em", minHeight: "400px;" } },
+                { className: "ui container", style: { marginTop: "3em", minHeight: "800px;" } },
                 React.createElement(
                     "div",
                     { className: "ui secondary menu grid" },
@@ -49,7 +49,7 @@ var Admin = React.createClass({
                     { style: { maxWidth: "500px" } },
                     React.createElement(
                         "div",
-                        { className: "ui tab padded basic segment", "data-tab": "first" },
+                        { className: "ui active tab padded basic segment", "data-tab": "first" },
                         React.createElement(
                             "h4",
                             { className: "ui blue header" },
@@ -209,7 +209,52 @@ var Admin = React.createClass({
                     React.createElement(
                         "div",
                         { className: "ui tab padded basic segment", "data-tab": "fifth" },
-                        React.createElement(Handouts, null)
+                        React.createElement(
+                            "h4",
+                            { className: "ui blue header" },
+                            "Handouts List"
+                        ),
+                        React.createElement(Handouts, null),
+                        React.createElement("div", { className: "ui divider" }),
+                        React.createElement(
+                            "h4",
+                            { className: "ui blue header" },
+                            "Add handouts"
+                        ),
+                        React.createElement(
+                            "form",
+                            { className: "ui form", method: "post", encType: "multipart/form-data", action: "/admin" },
+                            React.createElement(
+                                "div",
+                                { className: "field" },
+                                React.createElement(
+                                    "label",
+                                    null,
+                                    "Name"
+                                ),
+                                React.createElement("input", { type: "text", className: "ui text", name: "name" })
+                            ),
+                            React.createElement(
+                                "div",
+                                { className: "field" },
+                                React.createElement(
+                                    "label",
+                                    null,
+                                    "Description"
+                                ),
+                                React.createElement("textarea", { name: "desc" })
+                            ),
+                            React.createElement(
+                                "div",
+                                { className: "field" },
+                                React.createElement("input", { type: "file", name: "file" })
+                            ),
+                            React.createElement(
+                                "button",
+                                { className: "ui blue button" },
+                                "Post the handout"
+                            )
+                        )
                     ),
                     React.createElement(
                         "div",

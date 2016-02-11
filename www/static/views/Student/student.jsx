@@ -51,14 +51,7 @@ var Student = React.createClass({
                         </form>
                     </div>
                     <div className="ui tab padded basic segment" data-tab="third">
-                        <div className="ui very relaxed divided ordered list">
-                            <div className="item">
-                                <h4 className="ui header">Handout 1 kaf dsfds fdsfdsfs fsdfdsfsd fdsfdsf sfsdfsd dsfsdd fsdf ffffffff fffffffff fffffff ffffddsfsf fdsfdsf  <a style={{float: "right"}}>Get</a></h4>
-                                A book by navathe
-                            </div>
-                            <div className="item"> Handout 2</div>
-                            <div className="item"> Handout 3</div>
-                        </div>
+                        <HandoutsList/>
                     </div>
                     <div className="ui tab padded basic segment" data-tab="fourth">
                         <Announcement/>

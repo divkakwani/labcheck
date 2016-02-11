@@ -138,39 +138,11 @@ var Student = React.createClass({
                     React.createElement(
                         "div",
                         { className: "ui tab padded basic segment", "data-tab": "third" },
-                        React.createElement(
-                            "div",
-                            { className: "ui very relaxed divided ordered list" },
-                            React.createElement(
-                                "div",
-                                { className: "item" },
-                                React.createElement(
-                                    "h4",
-                                    { className: "ui header" },
-                                    "Handout 1 kaf dsfds fdsfdsfs fsdfdsfsd fdsfdsf sfsdfsd dsfsdd fsdf ffffffff fffffffff fffffff ffffddsfsf fdsfdsf  ",
-                                    React.createElement(
-                                        "a",
-                                        { style: { float: "right" } },
-                                        "Get"
-                                    )
-                                ),
-                                "A book by navathe"
-                            ),
-                            React.createElement(
-                                "div",
-                                { className: "item" },
-                                " Handout 2"
-                            ),
-                            React.createElement(
-                                "div",
-                                { className: "item" },
-                                " Handout 3"
-                            )
-                        )
+                        React.createElement(HandoutsList, null)
                     ),
                     React.createElement(
                         "div",
-                        { className: "ui loading tab padded basic segment", "data-tab": "fourth" },
+                        { className: "ui tab padded basic segment", "data-tab": "fourth" },
                         React.createElement(Announcement, null)
                     )
                 )
