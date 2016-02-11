@@ -1,11 +1,15 @@
 from flask import Flask, jsonify, request, redirect, make_response
 from flask import render_template
 
+from dbapi import api
 from announcements import announcements
 from time import strftime
+from handouts import handouts
+
 
 app = Flask(__name__)
-
+app.register_blueprint(api, url_prefix='/api')
+# app.config['UPLOAD_FOLDER'] = '/home/divakwani/PycharmProjects/labcheck/www/files'
 
 @app.route('/')
 def hello_world():
@@ -20,26 +24,6 @@ def display_student_page():
 @app.route('/admin')
 def display_admin_page():
     return render_template('admin.html')
-
-
-@app.route('/get/handouts')
-def get_handouts():
-    handouts = [{'name': 'codd', 'size': '2MB'}]
-    return jsonify(handouts)
-
-
-@app.route('/get/announcements')
-def get_announcements():
-    return jsonify(results=announcements.get_all())
-
-
-@app.route('/admin', methods=['POST'])
-def post_announcements():
-    announcements.post(request.form.get('sub'),
-                       request.form.get('desc'),
-                       strftime('%Y%m%d%H%M%S'))
-    response = make_response(redirect('/admin'))
-    return response
 
 
 if __name__ == '__main__':
