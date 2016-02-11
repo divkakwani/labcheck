@@ -12,16 +12,15 @@ A web application that empowers programming labs.
 * Digital Student Record
 * Announcement Board
 * Online handouts distribution 
-
-
+* Resources Acquisition
 
 ### Technologies used
 The core application is written in python. For its web interface, it uses flask at server-side
 and a mix of react, jquery and semantic ui at the client-side.
 
 
-
-
-
-
-
+### TODO
+* update components' states using websockets instead of polling via ajax.
+* Add new components
+    * AnnouncementForm
+    * HandoutsForm
