@@ -8,7 +8,7 @@ var Announcement = React.createClass({
     getInitialState: function() {
         var that = this;
         setInterval(function() {
-            $.ajax({url: "/get/announcements", success: function(result) {
+            $.ajax({url: "/api/announcements", success: function(result) {
                 that.setState({results: result.results});
             }});
         }, 10000);

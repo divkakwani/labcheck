@@ -1,5 +1,6 @@
 
-
+// TODO: remove ajax calls if possible
+// TODO: listen to server notifications
 
 var Handouts = React.createClass({
 
