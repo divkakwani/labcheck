@@ -11,6 +11,9 @@ of annoucements from and to the underlying database.
 
 import MySQLdb
 
+# TODO: Define the schema here
+# TODO: delete an announcement?
+# TODO: manage announcement objects
 
 class Announcements(object):
 
