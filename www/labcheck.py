@@ -13,7 +13,7 @@ app.register_blueprint(api, url_prefix='/api')
 
 @app.route('/')
 def hello_world():
-    return render_template('pages/index.html')
+    return render_template('authenticate.html')
 
 
 @app.route('/student')
