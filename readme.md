@@ -24,3 +24,8 @@ and a mix of react, jquery and semantic ui at the client-side.
 * Add new components
     * AnnouncementForm
     * HandoutsForm
+* Add statistics
+    * Class-wise
+        * Attendance - present day's and overall - (make a tabular, register-like interface)
+        * Submissions (tabular form)
+* Add scoring system
