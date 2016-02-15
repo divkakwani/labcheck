@@ -7,10 +7,10 @@ var TopMenu = React.createClass({
                 <div className="ui container" style={{margin: "10px"}}>
                     <div className="ui secondary menu">
                         <div className="item">
-                            <h2 style={{color: 'white'}}> LabCheck </h2>
+                            <h2 style={{color: 'white'}}> LabCheck &nbsp;<sup><i>beta</i></sup></h2>
                         </div>
                         <div className="right menu">
-                            <StudentDashboard name="Divyanshu"/>
+                            <StudentDashboard name={this.props.name}/>
                         </div>
                     </div>
                 </div>

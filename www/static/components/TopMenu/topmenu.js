@@ -18,13 +18,22 @@ var TopMenu = React.createClass({
                         React.createElement(
                             "h2",
                             { style: { color: 'white' } },
-                            " LabCheck "
+                            " LabCheck  ",
+                            React.createElement(
+                                "sup",
+                                null,
+                                React.createElement(
+                                    "i",
+                                    null,
+                                    "beta"
+                                )
+                            )
                         )
                     ),
                     React.createElement(
                         "div",
                         { className: "right menu" },
-                        React.createElement(StudentDashboard, { name: "Divyanshu" })
+                        React.createElement(StudentDashboard, { name: this.props.name })
                     )
                 )
             )
