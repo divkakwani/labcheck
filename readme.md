@@ -3,6 +3,7 @@
 
 A web application that empowers programming labs.
 
+![LabCheck](https://raw.githubusercontent.com/divkakwani/labcheck/master/screenshot.png)
 
 ### Goals of this project
 
