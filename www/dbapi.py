@@ -4,6 +4,7 @@ from announcements import announcements
 from handouts import handouts
 from flask import Flask, jsonify, request, redirect, make_response
 from time import strftime
+from programs import programs
 
 api = Blueprint('api', __name__)
 
@@ -30,3 +31,13 @@ def post_announcements():
                        request.form.get('desc'),
                        strftime('%Y%m%d%H%M%S'))
     return make_response(redirect('/admin'))
+
+@api.route('/programs/<coursecode>/<pgmcode>', methods=['GET'])
+def get_program(coursecode, pgmcode):
+    filepath = programs.get_stmt(coursecode, pgmcode)
+    try:
+        f = open(filepath)
+    except:
+        return FileNotFoundError
+    return f.read()
+
