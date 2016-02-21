@@ -15,7 +15,7 @@ def get_handouts():
 @api.route('/handouts', methods=['POST'])
 def post_handouts():
     # save file on sys
-    path = '/home/divkakwani/PycharmProjects/labcheck/www/files/' + request.files['file'].filename
+    path = '/home/divkakwani/PycharmProjects/labcheck/www/files/handouts/' + request.files['file'].filename
     request.files['file'].save(path)
     handouts.insert(request.form.get('sub'), path, request.form.get('desc'))
     response = make_response(redirect('/admin'))
