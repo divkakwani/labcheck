@@ -1,6 +1,10 @@
 import MySQLdb
 from threading import Lock
 from dbm import *
+from werkzeug.contrib.cache import SimpleCache
+
+# Global cache-storage
+cache = SimpleCache()
 
 
 def new_connection():
@@ -12,9 +16,10 @@ def new_connection():
 
 class DatabaseConnector:
     """
-    Stores a pool of connections to mysql. Upon requests, it transfers those
-    connections to the requesters. Later, when a requesters releases a connection,
-    it re-adds it to its connection pool.
+    Stores a pool of connections to mysql. Upon requests, it
+    transfers those connections to the requesters. Later, when
+    a requesters releases a connection, it re-adds it to its
+    connection pool.
     """
     mutex = Lock()
     free_connections = []
@@ -59,3 +64,18 @@ def select_query(conn, query, params=None):
 
 def insert_query(conn, query, params=None):
     execute_query(conn, query, params)
+
+
+def cached(name):
+    """
+    Caching decorator
+    """
+    def decorator(func):
+        def wrapper_func(*args, **kwargs):
+            ans = cache.get(name)
+            if not ans:
+                ans = func(*args, **kwargs)
+                cache.set(name, ans)
+            return ans
+        return wrapper_func
+    return decorator

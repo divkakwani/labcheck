@@ -1,11 +1,13 @@
 from flask import g
-from base import select_query, insert_query
+from base import select_query, insert_query, cached
+from dbm import *
 
 
 class Announcements:
     table_name = "announcements"
 
     @classmethod
+    @cached('all_announcements')
     def all(cls):
         query = "select * from %s order by timestamp desc" % Announcements.table_name
         return select_query(g.conn, query)
