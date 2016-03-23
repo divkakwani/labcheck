@@ -1,6 +1,6 @@
 import MySQLdb
 from threading import Lock
-from dbm import *
+from dbm import * 
 from werkzeug.contrib.cache import SimpleCache
 
 # Global cache-storage
@@ -66,6 +66,10 @@ def insert_query(conn, query, params=None):
     execute_query(conn, query, params)
 
 
+def create_table(conn, query, params=None):
+    execute_query(conn, query, params)
+
+
 def cached(name):
     """
     Caching decorator
@@ -79,3 +83,5 @@ def cached(name):
             return ans
         return wrapper_func
     return decorator
+
+
