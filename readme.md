@@ -30,3 +30,8 @@ and a mix of react, jquery and semantic ui at the client-side.
         * Attendance - present day's and overall - (make a tabular, register-like interface)
         * Submissions (tabular form)
 * Add scoring system
+* Updates in tables
+    * Qualify details(announcements, handouts et al) by course code.
+* Create model class
+* Discussion Forums
+* Notes catalogue

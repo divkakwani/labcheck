@@ -19,18 +19,33 @@ All URLs have the following base:
   | Param | Description |
   | ----  | ----- |
   | id    | Get the announcement with id=id;|
-  | page  | Get the nth page of announcement|
+  | page  | Get the nth page of announcements|
   | pgsz  | Specify the page size |
 
 
-* #### GET announcements/id
+* ##### GET announcements/&lt;id&gt;
   Gets the announcement having id=id
 
-* #### POST announcements
+* ##### POST announcements
   Posts an announcement on the server
 
-* #### DELETE announcements/id
+* ##### DELETE announcements/&lt;id&gt;
   Deletes the announcement having id=id
 
-* #### PUT announcements/id
+* ##### PUT announcements/&lt;id&gt;
   Update the attribute values of the announcement having id=id
+
+
+### Programs
+
+* ##### GET programs
+  Returns all the programs
+
+* ##### GET programs/&lt;id&gt;
+  Returns the program with id=id.
+
+* ##### GET programs/&lt;id&gt;/title
+  Returns the title of the program having id=id
+
+* ##### GET programs/&lt;id&gt;/stmt
+  Returns the title of the program having id=id
