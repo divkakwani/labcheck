@@ -1,0 +1,21 @@
+{
+  "name": "labcheck",
+  "homepage": "https://github.com/divkakwani/labcheck",
+  "authors": [
+    "Divyanshu Kakwani <divkakwani@gmail.com>"
+  ],
+  "description": "Empower Programming Labs",
+  "main": "src/labcheck.py",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "src/static/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.2.2"
+  }
+}
