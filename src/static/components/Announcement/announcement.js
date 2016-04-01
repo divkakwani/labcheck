@@ -6,23 +6,31 @@ var Announcement = React.createClass({
     displayName: "Announcement",
 
     getInitialState: function () {
-        var that = this;
-        setInterval(function () {
-            $.ajax({ url: "/api/announcements", success: function (result) {
-                    that.setState({ results: result.results });
-                } });
-        }, 10000);
         return { results: [] };
+    },
+
+    loadFromServer: function () {
+        $.ajax({
+            url: "http://localhost/dbm/announcements",
+            success: function (result) {
+                this.setState(result);
+            }.bind(this)
+        });
+    },
+
+    componentDidMount: function () {
+        this.loadFromServer();
+        setInterval(this.loadFromServer, 10000);
     },
 
     render: function () {
         return React.createElement(
             "div",
-            { className: "ui divided very relaxed bulleted list" },
-            this.state.results.map(function (row) {
+            { className: "ui relaxed padded list" },
+            this.state.results.map(function (row, index) {
                 return React.createElement(
                     "div",
-                    { className: "ui item" },
+                    { className: "item" },
                     React.createElement(
                         "div",
                         { className: "ui content header" },
@@ -32,7 +40,8 @@ var Announcement = React.createClass({
                         "div",
                         { className: "ui content description" },
                         row[1]
-                    )
+                    ),
+                    React.createElement("div", { className: "ui divider" })
                 );
             })
         );
