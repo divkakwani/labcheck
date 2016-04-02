@@ -1,106 +1,112 @@
 
+var StudentBox = React.createClass({
+    displayName: "StudentBox",
+
+    render: function () {
+        return React.createElement(
+            "form",
+            { className: "ui form", method: "post", action: "/student" },
+            React.createElement(
+                "div",
+                { className: "ui inline field" },
+                React.createElement(
+                    "label",
+                    { style: { width: "110px" } },
+                    "USN"
+                ),
+                React.createElement("input", { type: "text", className: "ui text", name: "usn" })
+            ),
+            React.createElement(
+                "div",
+                { className: "ui inline field" },
+                React.createElement(
+                    "label",
+                    { style: { width: "110px" } },
+                    "Course Code"
+                ),
+                React.createElement("input", { type: "text", className: "ui text", name: "ccode" })
+            ),
+            React.createElement("br", null),
+            React.createElement(
+                "button",
+                { className: "ui blue button" },
+                "Enter LabCheck"
+            )
+        );
+    }
+});
+
+var AdminBox = React.createClass({
+    displayName: "AdminBox",
+
+    render: function () {
+        return React.createElement(
+            "form",
+            { className: "ui form", method: "post", action: "/admin" },
+            React.createElement(
+                "div",
+                { className: "ui inline field" },
+                React.createElement(
+                    "label",
+                    { style: { width: "110px" } },
+                    "Course Code"
+                ),
+                React.createElement("input", { type: "text", className: "ui text", name: "ccode" })
+            ),
+            React.createElement(
+                "div",
+                { className: "ui inline field" },
+                React.createElement(
+                    "label",
+                    { style: { width: "110px" } },
+                    "Access Key"
+                ),
+                React.createElement("input", { type: "password", className: "ui password", name: "pass" })
+            ),
+            React.createElement("br", null),
+            React.createElement(
+                "button",
+                { className: "ui blue button" },
+                "Enter LabCheck"
+            )
+        );
+    }
+});
 
 var AuthenticateBox = React.createClass({
     displayName: "AuthenticateBox",
 
-    changeForm: function (form) {
-        var other = form == "f1" ? "f2" : "f1";
-        $('.label#' + other).addClass('basic');
-        $('.label#' + form).removeClass('basic');
-        $('form#' + form).css("display", "block");
-        $('form#' + other).css("display", "none");
+    getInitialState: function (form) {
+        return { admin: false, student: true, adminbtn: 'ui blue large basic label', studentbtn: 'ui blue large label' };
+    },
+
+    showAdminBox: function () {
+        this.setState({ adminbtn: 'ui blue large label', studentbtn: 'ui blue large basic label', admin: true, student: false });
+    },
+
+    showStudentBox: function () {
+        this.setState({ adminbtn: 'ui blue large basic label', studentbtn: 'ui blue large label', admin: false, student: true });
     },
 
     render: function () {
         var that = this;
         return React.createElement(
             "div",
-            { className: "ui left aligned blue basic segment" },
+            { className: "ui left aligned centered basic segment" },
             React.createElement(
-                "form",
-                { className: "ui form" },
-                React.createElement(
-                    "div",
-                    { className: "ui inline field" },
-                    React.createElement(
-                        "label",
-                        { className: "ui label", style: { width: "110px" } },
-                        "Login as"
-                    ),
-                    React.createElement(
-                        "div",
-                        { className: "ui blue large label", style: { cursor: "pointer" }, id: "f1", onClick: function () {
-                                that.changeForm("f1");
-                            } },
-                        "Student"
-                    ),
-                    React.createElement(
-                        "div",
-                        { className: "ui blue large basic label", style: { cursor: "pointer" }, id: "f2", onClick: function () {
-                                that.changeForm("f2");
-                            } },
-                        "Admin"
-                    )
-                )
+                "div",
+                { className: this.state.studentbtn, onClick: this.showStudentBox },
+                "Student"
             ),
             React.createElement(
-                "form",
-                { className: "ui form", id: "f1", method: "get", action: "/student" },
-                React.createElement(
-                    "div",
-                    { className: "ui inline field" },
-                    React.createElement(
-                        "label",
-                        { className: "ui label", style: { width: "110px" } },
-                        "USN"
-                    ),
-                    React.createElement("input", { type: "text", className: "ui text", name: "usn" })
-                ),
-                React.createElement(
-                    "div",
-                    { className: "ui inline field" },
-                    React.createElement(
-                        "label",
-                        { className: "ui label", style: { width: "110px" } },
-                        "Course Code"
-                    ),
-                    React.createElement("input", { type: "text", className: "ui text", name: "ccode" })
-                ),
-                React.createElement(
-                    "button",
-                    { className: "ui blue button" },
-                    "Enter LabCheck"
-                )
+                "div",
+                { className: this.state.adminbtn, onClick: this.showAdminBox },
+                "Admin"
             ),
-            React.createElement(
-                "form",
-                { className: "ui form", id: "f2", style: { display: "none" }, method: "get", action: "/admin" },
-                React.createElement(
-                    "div",
-                    { className: "ui inline field" },
-                    React.createElement(
-                        "label",
-                        { className: "ui label", style: { width: "110px" } },
-                        "Course Code"
-                    ),
-                    React.createElement("input", { type: "text", className: "ui text", name: "ccode" })
-                ),
-                React.createElement(
-                    "div",
-                    { className: "ui inline field" },
-                    React.createElement(
-                        "label",
-                        { className: "ui label", style: { width: "110px" } },
-                        "Access Key"
-                    ),
-                    React.createElement("input", { type: "password", className: "ui password", name: "pass" })
-                ),
-                React.createElement(
-                    "button",
-                    { className: "ui blue button" },
-                    "Enter LabCheck"
-                )
-            )
+            React.createElement("br", null),
+            React.createElement("br", null),
+            React.createElement("br", null),
+            this.state.admin ? React.createElement(AdminBox, null) : React.createElement(StudentBox, null)
         );
     }
 

@@ -1,49 +1,66 @@
 
+var StudentBox = React.createClass({
+    render: function() {
+        return (
+           <form className="ui form" method="post" action="/student">
+               <div className="ui inline field">
+                   <label style={{width: "110px"}}>USN</label>
+                   <input type="text" className="ui text" name="usn"/>
+               </div>
+               <div className="ui inline field">
+                   <label style={{width: "110px"}}>Course Code</label>
+                   <input type="text" className="ui text" name="ccode"/>
+               </div>
+               <br/>
+               <button className="ui blue button">Enter LabCheck</button>
+           </form>
+        );    
+    }
+});
+
+var AdminBox = React.createClass({
+    render: function() {
+        return (
+           <form className="ui form"  method="post" action="/admin">
+               <div className="ui inline field">
+                   <label style={{width: "110px"}}>Course Code</label>
+                   <input type="text" className="ui text" name="ccode"/>
+               </div>
+               <div className="ui inline field">
+                   <label style={{width: "110px"}}>Access Key</label>
+                   <input type="password" className="ui password" name="pass"/>
+               </div>
+               <br/>
+               <button className="ui blue button">Enter LabCheck</button>
+           </form>
+        );
+    }
+});
+
 
 var AuthenticateBox = React.createClass({
 
-    changeForm: function(form) {
-        var other = (form == "f1") ? "f2" : "f1";
-        $('.label#' + other).addClass('basic');
-        $('.label#' + form).removeClass('basic');
-        $('form#' + form).css("display", "block");
-        $('form#' + other).css("display", "none");
+    getInitialState: function(form) {
+        return {admin: false, student: true, adminbtn: 'ui blue large basic label', studentbtn: 'ui blue large label'};
+    },
+
+    showAdminBox: function() {
+        this.setState({adminbtn: 'ui blue large label', studentbtn: 'ui blue large basic label', admin: true, student: false});
+    },
+
+    showStudentBox: function() {
+        this.setState({adminbtn: 'ui blue large basic label', studentbtn: 'ui blue large label', admin: false, student: true});
     },
 
     render: function() {
         var that = this;
         return (
-               <div className="ui left aligned blue basic segment">
-                   <form className="ui form">
-                       <div className="ui inline field">
-                           <label className="ui label" style={{width: "110px"}}>Login as</label>
-                           <div className="ui blue large label" style={{cursor: "pointer"}} id="f1" onClick={function() {that.changeForm("f1");}}>Student</div>
-                           <div className="ui blue large basic label" style={{cursor: "pointer"}} id="f2" onClick={function() {that.changeForm("f2");}}>Admin</div>
-                       </div>
-                   </form>
-                   <form className="ui form" id="f1" method="get" action="/student">
-                       <div className="ui inline field">
-                           <label className="ui label" style={{width: "110px"}}>USN</label>
-                           <input type="text" className="ui text" name="usn"/>
-                       </div>
-                       <div className="ui inline field">
-                           <label className="ui label" style={{width: "110px"}}>Course Code</label>
-                           <input type="text" className="ui text" name="ccode"/>
-                       </div>
-                       <button className="ui blue button">Enter LabCheck</button>
-                   </form>
-                   <form className="ui form" id="f2" style={{display: "none"}} method="get" action="/admin">
-                       <div className="ui inline field">
-                           <label className="ui label" style={{width: "110px"}}>Course Code</label>
-                           <input type="text" className="ui text" name="ccode"/>
-                       </div>
-                       <div className="ui inline field">
-                           <label className="ui label" style={{width: "110px"}}>Access Key</label>
-                           <input type="password" className="ui password" name="pass"/>
-                       </div>
-                       <button className="ui blue button">Enter LabCheck</button>
-                   </form>
-               </div>
+            <div className="ui left aligned centered basic segment">
+                <div className={this.state.studentbtn}  onClick={this.showStudentBox}>Student</div>
+                <div className={this.state.adminbtn} onClick={this.showAdminBox}>Admin</div>
+                <br/><br/><br/>
+                {this.state.admin ? <AdminBox/> : <StudentBox/>}
+            </div>
         );
     
     }
