@@ -23,19 +23,140 @@
 
 <body>
 
-    <div id="admin"></div>
+    <div id="topmenu"></div>
+
+    <div class="ui container" style="margin-top: 3em; min-height: 800px;">
+        <div class="ui secondary menu grid">
+            <a class="item active" data-tab="first">Announcements</a>
+            <a class="item" data-tab="second">Program Database</a>
+            <a class="item" data-tab="third">Student Report</a>
+            <a class="item" data-tab="fourth">Plagiarism Report</a>
+            <a class="item" data-tab="fifth">Manage Handouts</a>
+            <a class="item" data-tab="sixth">Statistics</a>
+        </div>
+
+        <div class="ui active tab padded basic segment" data-tab="first">
+            <h4 class="ui blue header"> Make an announcement </h4>
+            <form class="ui form" action="/dbm/announcements" method="post">
+                <div class="ui field">
+                    <label>Subject: </label>
+                    <input class="ui text" name="sub" type="text"/>
+                </div>
+                <div class="ui field">
+                    <label>Description: </label>
+                    <textarea name="desc"></textarea>
+                </div>
+                <button class="ui blue button">Post the announcement</button>
+            </form>
+        </div>
 
 
-        <script src="{{ url_for('static', filename='react/react.js') }}"></script>
-        <script src="{{ url_for('static', filename='react/react-dom.js') }}"></script>
+        <div class="ui tab padded basic segment" data-tab="second">
+            <div class="ui blue secondary pointing compact menu">
+                <div class="item" data-tab="sub0-second">Programs</div>
+                <div class="item" data-tab="sub1-second">Tests</div>
+            </div>
+            <div class="ui active tab padded basic segment" data-tab="sub0-first">
+                <i>(Select one of the above options.)</i>
+            </div>
+            <div class="ui tab padded basic segment" data-tab="sub0-second">
+                <table class="ui blue celled striped table">
+                    <thead>
+                        <tr>
+                            <th> </th>
+                            <th> Program ID </th>
+                            <th>Program Name</th>
+                            <th>Description</th>
+                            <th>Statement</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-        <script type="text/javascript" src="{{ url_for('static', filename='components/Footer/footer.js') }}"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='components/StudentDashboard/studentdashboard.js') }}"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='components/TopMenu/topmenu.js') }}"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='components/Handouts/handouts.js') }}"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='components/TabbedDisplayBox/tabbeddisplaybox.js') }}"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='views/Admin/admin.js') }}"></script>
+        <div class="ui tab padded basic segment" data-tab="third">
+            <h4 class="ui blue header"> Search for a specific student</h4>
+            <div class="ui segment" style="max-width: 350px">
+                <form class="ui form">
+                    <div class="field">
+                        <label>USN</label>
+                        <div class="ui labeled input">
+                            <div class="ui label">1RV13IS</div>
+                            <input class="ui text" type="text"/>
+                        </div>
+                    </div>
+                    <button class="ui blue button">Get report</button>
+                    <button class="ui blue button">Generate record*</button>
+                </form>
+            </div>
+            <div class="ui horizontal divider">OR</div>
+            <h4 class="ui blue header"><a>Get all the stuents' report</a></h4>
+        </div>
 
+        <div class="ui tab padded basic segment" data-tab="fourth">
+            To be done later;
+        </div>
+
+        <div class="ui tab padded basic segment" data-tab="fifth">
+            <h4 class="ui blue header">Handouts List</h4>
+            <div id="handouts"></div>
+            <div class="ui divider"></div>
+            <h4 class="ui blue header">Add handouts</h4>
+            <form class="ui form" method="post" encType="multipart/form-data" action="/admin">
+                <div class="field">
+                    <label>Name</label>
+                    <input type="text" class="ui text" name="name"/>
+                </div>
+                <div class="field">
+                    <label>Description</label>
+                    <textarea name="desc"></textarea>
+                </div>
+                <div class="field">
+                    <input type="file" name="file"/>
+                </div>
+                <button class="ui blue button">Post the handout</button>
+            </form>
+        </div>
+
+        <div class="ui tab padded basic segment" data-tab="sixth">
+            <div class="ui blue secondary pointing compact menu">
+                <div class="item" data-tab="sub-second">Attendance</div>
+                <div class="item" data-tab="sub-third">Submissions</div>
+            </div>
+            <div class="ui active tab padded basic segment" data-tab="sub-first">
+                <i>Select one of the above options</i>
+            </div>
+            <div class="ui tab padded basic segment" data-tab="sub-second">
+                second
+            </div>
+            <div class="ui tab padded basic segment" data-tab="sub-third">
+                third
+            </div>
+
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+
+    <script src="{{ url_for('static', filename='react/react.js') }}"></script>
+    <script src="{{ url_for('static', filename='react/react-dom.js') }}"></script>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='components/Footer/footer.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='components/StudentDashboard/studentdashboard.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='components/TopMenu/topmenu.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='components/Handouts/handouts.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='components/TabbedDisplayBox/tabbeddisplaybox.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='views/Admin/admin.js') }}"></script>
+
+
+    <script>
+        ReactDOM.render(React.createElement(TopMenu, {usn: "{{usn}}", coursecode: "{{coursecode}}" }), document.getElementById('topmenu'));
+        ReactDOM.render(React.createElement(Handouts, null), document.getElementById('handouts'));
+        ReactDOM.render(React.createElement(Footer, null), document.getElementById('footer'));
+    </script>
 
 </body>
 

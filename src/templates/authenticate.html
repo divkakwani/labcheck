@@ -1,20 +1,43 @@
 
+
 <head>
     <meta content='width=device-width, initial-scale=1' name='viewport'/>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='semantic-ui/semantic.min.css') }}"/>
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='semantic-ui/semantic.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/classnames/2.2.3/index.js"></script>
 
 </head>
 
 <body>
 
-    <div id="authenticate"></div>
+
+    <div class="ui center aligned container" style="padding-top: 5%; height: 100%; width: 500px;">
+        <div style="font-size: 4em" class="ui huge blue header">LabCheck</div>
+        <br/><br/>
+        <div id="authenticatebox"></div>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="ui red message">
+            <ul style="text-align: left;">
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        {% endwith %}
+    </div>
+
 
 
     <script src="{{ url_for('static', filename='react/react.js') }}"></script>
     <script src="{{ url_for('static', filename='react/react-dom.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='views/Authenticate/authenticate.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='components/TopMenu/topmenu.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='components/Footer/footer.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='components/StudentDashboard/studentdashboard.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='components/AuthenticateBox/authenticatebox.js') }}"></script>
 
 </body>
 
