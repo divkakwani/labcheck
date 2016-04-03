@@ -68,3 +68,9 @@ target/
 
 # Pycharm meta-folder
 .idea/
+
+# node modules
+node_modules/
+
+# ftp upload location
+uploads/
