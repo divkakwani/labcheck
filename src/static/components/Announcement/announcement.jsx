@@ -25,17 +25,17 @@ var Announcement = React.createClass({
 
     render: function() {
         return (
-                <div className="ui relaxed padded list">
-                    {this.state.results.map(function(row, index) {
-                        return (
-                                <div className="item">
-                                    <div className="ui content header">{row[0]}</div>
-                                    <div className="ui content description">{row[1]}</div>
-                                    <div className="ui divider"></div>
-                                </div>
-                                );
-                    })}
-                </div>
+            <div className="ui relaxed padded list">
+            {this.state.results.map(function(row, index) {
+                return (
+                    <div className="item">
+                        <div className="ui content header">{row[1]}</div>
+                        <div className="ui content description">{row[2]}</div>
+                        <div className="ui divider"></div>
+                    </div>
+                );
+            })}
+            </div>
         );
     }
 });

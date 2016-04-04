@@ -34,12 +34,12 @@ var Announcement = React.createClass({
                     React.createElement(
                         "div",
                         { className: "ui content header" },
-                        row[0]
+                        row[1]
                     ),
                     React.createElement(
                         "div",
                         { className: "ui content description" },
-                        row[1]
+                        row[2]
                     ),
                     React.createElement("div", { className: "ui divider" })
                 );
