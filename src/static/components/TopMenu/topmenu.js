@@ -32,8 +32,8 @@ var TopMenu = React.createClass({
                     ),
                     React.createElement(
                         "div",
-                        { className: "right menu" },
-                        React.createElement(StudentDashboard, { name: this.props.name })
+                        { className: "right menu", style: { width: "400px" } },
+                        React.createElement(StudentDashboard, { usn: this.props.usn, coursecode: this.props.coursecode })
                     )
                 )
             )

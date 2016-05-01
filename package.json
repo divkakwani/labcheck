@@ -1,0 +1,22 @@
+{
+  "name": "labcheck",
+  "version": "1.0.0",
+  "description": "Empower Programming Labs",
+  "main": "src/labcheck.py",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/divkakwani/labcheck.git"
+  },
+  "author": "Divyanshu Kakwani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/divkakwani/labcheck/issues"
+  },
+  "homepage": "https://github.com/divkakwani/labcheck#readme",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  }
+}

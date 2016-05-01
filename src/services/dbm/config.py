@@ -1,7 +1,8 @@
-from dbm import * 
+configdict = {
+    'dbms'    : {'host'   : 'localhost',
+                 'user'   : 'root',
+                 'passwd' : 'root',
+                 'db'     : 'labcheck'},
 
-
-dbm.config['host']   = 'localhost'
-dbm.config['user']   = 'root'
-dbm.config['passwd'] = 'root'
-dbm.config['db']     = 'labcheck'
+    'courses' : ['12IS13', '12IS35', '12IS56', 'labcheck']
+}

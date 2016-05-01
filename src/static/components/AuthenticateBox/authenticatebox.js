@@ -5,7 +5,7 @@ var StudentBox = React.createClass({
     render: function () {
         return React.createElement(
             "form",
-            { className: "ui form", method: "post", action: "/student" },
+            { className: "ui form", method: "post", action: "/studentlogin" },
             React.createElement(
                 "div",
                 { className: "ui inline field" },
@@ -24,7 +24,7 @@ var StudentBox = React.createClass({
                     { style: { width: "110px" } },
                     "Course Code"
                 ),
-                React.createElement("input", { type: "text", className: "ui text", name: "ccode" })
+                React.createElement("input", { type: "text", className: "ui text", name: "coursecode" })
             ),
             React.createElement("br", null),
             React.createElement(
@@ -42,7 +42,7 @@ var AdminBox = React.createClass({
     render: function () {
         return React.createElement(
             "form",
-            { className: "ui form", method: "post", action: "/admin" },
+            { className: "ui form", method: "post", action: "/adminlogin" },
             React.createElement(
                 "div",
                 { className: "ui inline field" },
@@ -51,7 +51,7 @@ var AdminBox = React.createClass({
                     { style: { width: "110px" } },
                     "Course Code"
                 ),
-                React.createElement("input", { type: "text", className: "ui text", name: "ccode" })
+                React.createElement("input", { type: "text", className: "ui text", name: "coursecode" })
             ),
             React.createElement(
                 "div",
@@ -111,3 +111,5 @@ var AuthenticateBox = React.createClass({
     }
 
 });
+
+ReactDOM.render(React.createElement(AuthenticateBox, null), document.getElementById('authenticatebox'));

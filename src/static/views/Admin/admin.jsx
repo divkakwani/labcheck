@@ -19,7 +19,7 @@ var Admin = React.createClass({
                     <div style={{maxWidth: "500px"}}>
                     <div className="ui active tab padded basic segment" data-tab="first">
                         <h4 className="ui blue header"> Make an announcement </h4>
-                        <form className="ui form" action="/admin" method="post">
+                        <form className="ui form" action="/dbm/announcements" method="post">
                             <div className="ui field">
                                 <label>Subject: </label>
                                 <input className="ui text" name="sub" type="text"/>
@@ -32,24 +32,29 @@ var Admin = React.createClass({
                         </form>
                     </div>
                     <div className="ui tab padded basic segment" data-tab="second">
-                        <div className="ui blue secondary pointing menu">
-                            <div className="active item">Programs</div>
-                            <div className="item">Tests</div>
+                        <div className="ui blue secondary pointing compact menu">
+                            <div className="item" data-tab="sub0-second">Programs</div>
+                            <div className="item" data-tab="sub1-second">Tests</div>
                         </div>
 
-                        <table className="ui blue celled striped table">
-                            <thead>
-                            <tr>
-                                <th> </th>
-                                <th> Program ID </th>
-                                <th>Program Name</th>
-                                <th>Description</th>
-                                <th>Statement</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
+                        <div className="ui active tab padded basic segment" data-tab="sub0-first">
+                            <i>(Select one of the above options.)</i>
+                        </div>
+                        <div className="ui tab padded basic segment" data-tab="sub0-second">
+                            <table className="ui blue celled striped table">
+                                <thead>
+                                <tr>
+                                    <th> </th>
+                                    <th> Program ID </th>
+                                    <th>Program Name</th>
+                                    <th>Description</th>
+                                    <th>Statement</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
                     <div className="ui tab padded basic segment" data-tab="third">
@@ -97,7 +102,20 @@ var Admin = React.createClass({
                     </div>
 
                     <div className="ui tab padded basic segment" data-tab="sixth">
-                    To be done later.
+                        <div className="ui blue secondary pointing compact menu">
+                            <div className="item" data-tab="sub-second">Attendance</div>
+                            <div className="item" data-tab="sub-third">Submissions</div>
+                        </div>
+                        <div className="ui active tab padded basic segment" data-tab="sub-first">
+                            <i>Select one of the above options</i>
+                        </div>
+                        <div className="ui tab padded basic segment" data-tab="sub-second">
+                            second
+                        </div>
+                        <div className="ui tab padded basic segment" data-tab="sub-third">
+                            third
+                        </div>
+
                     </div>
                     </div>
                 </div>

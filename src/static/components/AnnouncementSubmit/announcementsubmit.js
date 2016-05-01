@@ -10,7 +10,7 @@ var AnnouncementSubmit = React.createClass({
         this.setState({ formOn: false, loading: true });
         var formData = $("#form420").serialize();
         $.ajax({
-            url: '/dbm/announcements',
+            url: '/dbm/' + session.coursecode + '/announcements',
             method: 'POST',
             data: formData,
             success: function (result) {

@@ -1,40 +1,39 @@
-from flask import g
 from .base import create_table, select_query
 
 name = 'programs'
 
-def create(conn=None):
+def create(conn):
     query = """create table programs (
                 pid bigint primary key,
                 title varchar(1000) not null,
                 stmt varchar(10000) not null
             );"""
-    return create_table(conn or g.conn, query)
+    return create_table(conn, query)
 
 
-def add(pid, title, stmt):
+def add(conn, pid, title, stmt):
     query = "insert into programs values (%s, %s, %s)"
-    return insert_into(g.conn, query, (pid, title, stmt))
+    return insert_into(conn, query, (pid, title, stmt))
 
 
-def all():
+def all(conn):
     query = "select * from programs"
-    return select_query(g.conn, query)
+    return select_query(conn, query)
 
 
-def get(pid):
+def get(conn, pid):
     query = "select * from programs where pid=%s"
-    return select_query(g.conn, query, (pid,))
+    return select_query(conn, query, (pid,))[0]
 
 
-def title(pid):
+def title(conn, pid):
     query = "select title from programs where pid=%s"
-    return select_query(g.conn, query, (pid,))[0][0]
+    return select_query(conn, query, (pid,))[0][0]
 
 
-def stmt(pid):
+def stmt(conn, pid):
     query = "select stmt from programs where pid=%s"
-    return select_query(g.conn, query, (pid,))[0][0]
+    return select_query(conn, query, (pid,))[0][0]
 
 
 def remove(pid):

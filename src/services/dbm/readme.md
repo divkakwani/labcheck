@@ -49,3 +49,8 @@ All URLs have the following base:
 
 * ##### GET programs/&lt;id&gt;/stmt
   Returns the title of the program having id=id
+
+
+### Submissions
+
+* ##### GET 

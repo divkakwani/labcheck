@@ -1,20 +1,29 @@
 
-
 var Handouts = React.createClass({
     displayName: "Handouts",
 
     getInitialState: function () {
-        var that = this;
-        $.ajax({ url: "/get/handouts", success: function (result) {
-                //that.setState(result);
-            } });
-        return { data: [["data bank", "influential paper by codd", "5MB"], ["gekhre", "implementation of rdbms", "20MB"]] };
+        return { results: [] };
+    },
+
+    loadFromServer: function () {
+        $.ajax({
+            url: "/dbm/" + session.coursecode + "/handouts",
+            success: function (result) {
+                this.setState(result);
+            }.bind(this)
+        });
+    },
+
+    componentDidMount: function () {
+        this.loadFromServer();
+        setInterval(this.loadFromServer, 8000);
     },
 
     render: function () {
         return React.createElement(
             "table",
-            { className: "ui blue celled table" },
+            { className: "ui celled table" },
             React.createElement(
                 "thead",
                 null,
@@ -24,7 +33,12 @@ var Handouts = React.createClass({
                     React.createElement(
                         "th",
                         null,
-                        "File Name"
+                        "ID"
+                    ),
+                    React.createElement(
+                        "th",
+                        null,
+                        "Name"
                     ),
                     React.createElement(
                         "th",
@@ -34,7 +48,7 @@ var Handouts = React.createClass({
                     React.createElement(
                         "th",
                         null,
-                        "Size"
+                        "URL"
                     ),
                     React.createElement("th", null)
                 )
@@ -42,7 +56,7 @@ var Handouts = React.createClass({
             React.createElement(
                 "tbody",
                 null,
-                this.state.data.map(function (row) {
+                this.state.results.map(function (row) {
                     return React.createElement(
                         "tr",
                         null,
@@ -63,5 +77,4 @@ var Handouts = React.createClass({
             )
         );
     }
-
 });

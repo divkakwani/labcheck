@@ -6,19 +6,27 @@ var HandoutsList = React.createClass({
     displayName: "HandoutsList",
 
     getInitialState: function () {
-        var that = this;
-        setInterval(function () {
-            $.ajax({ url: "/api/handouts", success: function (result) {
-                    that.setState({ results: result.results });
-                } });
-        }, 10000);
         return { results: [] };
+    },
+
+    loadFromServer: function () {
+        $.ajax({
+            url: "/dbm/" + session.coursecode + "/handouts",
+            success: function (result) {
+                this.setState(result);
+            }.bind(this)
+        });
+    },
+
+    componentDidMount: function () {
+        this.loadFromServer();
+        setInterval(this.loadFromServer, 10000);
     },
 
     render: function () {
         return React.createElement(
             "div",
-            { className: "ui divided very relaxed ordered list" },
+            { className: "ui divided very relaxed ordered list", style: { maxWidth: "500px" } },
             this.state.results.map(function (row) {
                 return React.createElement(
                     "div",
@@ -26,14 +34,14 @@ var HandoutsList = React.createClass({
                     React.createElement(
                         "h4",
                         { className: "ui content header" },
-                        row[0],
+                        row[1],
                         React.createElement(
                             "a",
-                            { style: { float: "right" } },
+                            { style: { float: "right" }, href: row[3] },
                             "Get"
                         )
                     ),
-                    row[1]
+                    row[2]
                 );
             })
         );

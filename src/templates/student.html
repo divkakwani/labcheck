@@ -2,8 +2,13 @@
 <head>
     <meta content='width=device-width, initial-scale=1' name='viewport'/>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='semantic-ui/semantic.min.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/toastr.min.css') }}"/>
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='semantic-ui/semantic.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/toastr.min.js') }}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.js"> </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/screenfull.js/3.0.0/screenfull.js"> </script>
+
 
     <script type="text/javascript">
         $(document).ready(function() {
@@ -17,6 +22,7 @@
             $('.menu .item').tab();
             $('.ui.dropdown').dropdown();
         });
+        toastr.options.timeOut = 10000;
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.css" />
 
@@ -26,10 +32,11 @@
 
     <div id="topmenu"></div>
 
+
     <div class="ui container" style="margin-top: 3em; min-height: 400px;">
 
-        <div class="ui blue secondary compact stackable menu">
-            <a class="item" data-tab="first">Programming Assignments</a>
+        <div class="ui blue secondary pointing compact stackable menu">
+            <a class="active item" data-tab="first">Programming Assignments</a>
             <a class="item" data-tab="second">Check your Status</a>
             <a class="item" data-tab="fifth">Request a Resource</a>
             <a class="item" data-tab="third">Handouts</a>
@@ -37,37 +44,12 @@
         </div>
 
         <div class="ui active tab padded basic segment" data-tab="first">
-            <form class="ui right aligned form">
-                <div class="inline field">
-                    <label class="ui header" style="width: 100px">Program ID </label>
-                    <select id="pcode" class="ui dropdown" onChange={function() {
-                        $("pdisp").attr("pcode", $("#pcode").val());
-                        }}>
-                        <option value=""> Select your program</option>
-                        <option value="1"> Program 1</option>
-                        <option value="2"> Program 2</option>
-                        <option value="3"> Program 3</option>
-                    </select>
-                </div>
-                <div class="ui hidden divider"></div>
-                <div class="ui message">
-                    <h4 class="ui blue header">Program Statement</h4>
-                    <Program id="pdisp" ccode="2C3" pcode="p1"/>
-                </div>
-                <div class="ui hidden divider"></div>
-                <div class="inline field">
-                    <label style="width: 100px" className="ui header">Upload your file</label>
-                    <input type="file"/>
-                </div>
-                <div class="ui hidden divider"></div>
-                <div class="ui blue message">Note that you can make atmost 10 submissions per day</div>
-                <button class="ui blue button">Submit</button>
-            </form>
+            <div id="programform"></div>
         </div>
 
 
         <div class="ui tab padded basic segment" data-tab="second">
-            <div id="studentreport"> </div>
+            <div id="studentstatus"> </div>
         </div>
 
         <div class="ui tab padded basic segment" data-tab="third">
@@ -84,23 +66,29 @@
 
     <script src="{{ url_for('static', filename='react/react.js') }}"></script>
     <script src="{{ url_for('static', filename='react/react-dom.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
     <script type="text/javascript" src="{{ url_for('static', filename='components/Footer/footer.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='components/Program/program.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='components/Announcement/announcement.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='components/HandoutsList/handoutslist.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='components/StudentDashboard/studentdashboard.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='components/TopMenu/topmenu.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='components/ProgramForm/programform.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='components/Handouts/handouts.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='views/Student/student.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='components/StudentStatus/studentstatus.js') }}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script>
     
     <script>
         ReactDOM.render(React.createElement(TopMenu, {usn: "{{usn}}", coursecode: "{{coursecode}}" }), document.getElementById('topmenu'));
         ReactDOM.render(React.createElement(HandoutsList, null), document.getElementById('handoutslist'));
         ReactDOM.render(React.createElement(Announcement, null), document.getElementById('announcement'));
+        ReactDOM.render(React.createElement(ProgramForm, null), document.getElementById('programform'));
+        ReactDOM.render(React.createElement(StudentStatus, null), document.getElementById('studentstatus'));
         ReactDOM.render(React.createElement(Footer, null), document.getElementById('footer'));
     </script>
+    
+    <script src="{{ url_for('static', filename='js/dropzone.js') }}"></script>
+    
 </body>
 
 

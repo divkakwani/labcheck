@@ -9,8 +9,8 @@ var TopMenu = React.createClass({
                         <div className="item">
                             <h2 style={{color: 'white'}}> LabCheck &nbsp;<sup><i>beta</i></sup></h2>
                         </div>
-                        <div className="right menu">
-                            <StudentDashboard name={this.props.name}/>
+                        <div className="right menu" style={{width: "400px"}}>
+                            <StudentDashboard usn={this.props.usn} coursecode={this.props.coursecode}/>
                         </div>
                     </div>
                 </div>

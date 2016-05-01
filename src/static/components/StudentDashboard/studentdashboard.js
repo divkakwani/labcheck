@@ -5,11 +5,18 @@ var StudentDashboard = React.createClass({
     render: function () {
         return React.createElement(
             "div",
-            { className: "ui large blue inverted menu" },
+            { style: { width: "400px" } },
             React.createElement(
-                "div",
-                { className: "item" },
-                this.props.name
+                "span",
+                { style: { width: "30px", fontWeight: "bold", padding: "10px" } },
+                "USN: ",
+                this.props.usn
+            ),
+            React.createElement(
+                "span",
+                { style: { width: "30px", fontWeight: "bold", padding: "10px" } },
+                "Course: ",
+                this.props.coursecode
             )
         );
     }

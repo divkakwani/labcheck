@@ -18,8 +18,11 @@ var Footer = React.createClass({
                     React.createElement(
                         'div',
                         { className: 'item' },
-                        ' ',
-                        React.createElement('i', { className: 'ui large github icon' })
+                        React.createElement(
+                            'a',
+                            { href: 'http://www.github.com/divkakwani/labcheck' },
+                            React.createElement('i', { className: 'ui large github icon' })
+                        )
                     ),
                     React.createElement(
                         'div',

@@ -48,29 +48,24 @@ def admin_login():
     if not valid:
         return redirect('/')
     session['coursecode'] = request.form.get('coursecode')
+    session['accesskey'] = request.form.get('accesskey')
     return redirect('/admin')
 
 
-@app.route('/student', methods=['GET', 'POST'])
+@app.route('/student', methods=['GET']) 
 def display_student_page():
-    if request.method == 'GET':
-        if 'usn' in session:
-            return render_template('student.html', usn=session['usn'], coursecode=session['coursecode'])
-        else:
-            return redirect('/')
+    if 'usn' in session:
+        return render_template('student.html', usn=session['usn'], coursecode=session['coursecode'])
+    else:
+        return redirect('/')
 
 
-@app.route('/admin', methods=['GET', 'POST'])
+@app.route('/admin', methods=['GET'])
 def display_admin_page():
-    if request.method == 'GET':
-        if 'accesskey' in session:
-            return render_template('admin.html')
-        else:
-            return redirect('/')
-    if request.method == 'POST':
-        session['course'] = request.form.get('course')
-        session['accesskey'] = request.form.get('accesskey')
+    if 'accesskey' in session:
         return render_template('admin.html')
+    else:
+        return redirect('/')
 
 
 @app.route('/getsession', methods=['GET'])

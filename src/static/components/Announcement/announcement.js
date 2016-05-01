@@ -9,18 +9,25 @@ var Announcement = React.createClass({
         return { results: [] };
     },
 
-    loadFromServer: function () {
+    loadFromServer: function (notify = false) {
         $.ajax({
-            url: "http://localhost/dbm/announcements",
-            success: function (result) {
-                this.setState(result);
+            url: "/dbm/" + session.coursecode + "/announcements",
+            success: function (response) {
+                /* Generate notifications */
+                console.log(notify);
+                if (notify) {
+                    for (var i = 0; i < response.results.length - this.state.results.length; i++) {
+                        toastr.info(response.results[i][1], "New Announcement");
+                    }
+                }
+                this.setState(response);
             }.bind(this)
         });
     },
 
     componentDidMount: function () {
         this.loadFromServer();
-        setInterval(this.loadFromServer, 10000);
+        setInterval(this.loadFromServer.bind(this, true), 10000);
     },
 
     render: function () {

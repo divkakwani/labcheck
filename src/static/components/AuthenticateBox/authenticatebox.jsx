@@ -2,14 +2,14 @@
 var StudentBox = React.createClass({
     render: function() {
         return (
-           <form className="ui form" method="post" action="/student">
+           <form className="ui form" method="post" action="/studentlogin">
                <div className="ui inline field">
                    <label style={{width: "110px"}}>USN</label>
                    <input type="text" className="ui text" name="usn"/>
                </div>
                <div className="ui inline field">
                    <label style={{width: "110px"}}>Course Code</label>
-                   <input type="text" className="ui text" name="ccode"/>
+                   <input type="text" className="ui text" name="coursecode"/>
                </div>
                <br/>
                <button className="ui blue button">Enter LabCheck</button>
@@ -21,10 +21,10 @@ var StudentBox = React.createClass({
 var AdminBox = React.createClass({
     render: function() {
         return (
-           <form className="ui form"  method="post" action="/admin">
+           <form className="ui form"  method="post" action="/adminlogin">
                <div className="ui inline field">
                    <label style={{width: "110px"}}>Course Code</label>
-                   <input type="text" className="ui text" name="ccode"/>
+                   <input type="text" className="ui text" name="coursecode"/>
                </div>
                <div className="ui inline field">
                    <label style={{width: "110px"}}>Access Key</label>
@@ -66,3 +66,8 @@ var AuthenticateBox = React.createClass({
     }
 
 });
+
+ReactDOM.render(
+    <AuthenticateBox />,
+    document.getElementById('authenticatebox')
+);

@@ -57,7 +57,7 @@ var Admin = React.createClass({
                         ),
                         React.createElement(
                             "form",
-                            { className: "ui form", action: "/admin", method: "post" },
+                            { className: "ui form", action: "/dbm/announcements", method: "post" },
                             React.createElement(
                                 "div",
                                 { className: "ui field" },
@@ -90,55 +90,68 @@ var Admin = React.createClass({
                         { className: "ui tab padded basic segment", "data-tab": "second" },
                         React.createElement(
                             "div",
-                            { className: "ui blue secondary pointing menu" },
+                            { className: "ui blue secondary pointing compact menu" },
                             React.createElement(
                                 "div",
-                                { className: "active item" },
+                                { className: "item", "data-tab": "sub0-second" },
                                 "Programs"
                             ),
                             React.createElement(
                                 "div",
-                                { className: "item" },
+                                { className: "item", "data-tab": "sub1-second" },
                                 "Tests"
                             )
                         ),
                         React.createElement(
-                            "table",
-                            { className: "ui blue celled striped table" },
+                            "div",
+                            { className: "ui active tab padded basic segment", "data-tab": "sub0-first" },
                             React.createElement(
-                                "thead",
+                                "i",
                                 null,
+                                "(Select one of the above options.)"
+                            )
+                        ),
+                        React.createElement(
+                            "div",
+                            { className: "ui tab padded basic segment", "data-tab": "sub0-second" },
+                            React.createElement(
+                                "table",
+                                { className: "ui blue celled striped table" },
                                 React.createElement(
-                                    "tr",
+                                    "thead",
                                     null,
                                     React.createElement(
-                                        "th",
+                                        "tr",
                                         null,
-                                        " "
-                                    ),
-                                    React.createElement(
-                                        "th",
-                                        null,
-                                        " Program ID "
-                                    ),
-                                    React.createElement(
-                                        "th",
-                                        null,
-                                        "Program Name"
-                                    ),
-                                    React.createElement(
-                                        "th",
-                                        null,
-                                        "Description"
-                                    ),
-                                    React.createElement(
-                                        "th",
-                                        null,
-                                        "Statement"
+                                        React.createElement(
+                                            "th",
+                                            null,
+                                            " "
+                                        ),
+                                        React.createElement(
+                                            "th",
+                                            null,
+                                            " Program ID "
+                                        ),
+                                        React.createElement(
+                                            "th",
+                                            null,
+                                            "Program Name"
+                                        ),
+                                        React.createElement(
+                                            "th",
+                                            null,
+                                            "Description"
+                                        ),
+                                        React.createElement(
+                                            "th",
+                                            null,
+                                            "Statement"
+                                        )
                                     )
-                                )
-                            ),
-                            React.createElement("tbody", null)
+                                ),
+                                React.createElement("tbody", null)
+                            )
                         )
                     ),
                     React.createElement(
@@ -259,7 +272,39 @@ var Admin = React.createClass({
                     React.createElement(
                         "div",
                         { className: "ui tab padded basic segment", "data-tab": "sixth" },
-                        "To be done later."
+                        React.createElement(
+                            "div",
+                            { className: "ui blue secondary pointing compact menu" },
+                            React.createElement(
+                                "div",
+                                { className: "item", "data-tab": "sub-second" },
+                                "Attendance"
+                            ),
+                            React.createElement(
+                                "div",
+                                { className: "item", "data-tab": "sub-third" },
+                                "Submissions"
+                            )
+                        ),
+                        React.createElement(
+                            "div",
+                            { className: "ui active tab padded basic segment", "data-tab": "sub-first" },
+                            React.createElement(
+                                "i",
+                                null,
+                                "Select one of the above options"
+                            )
+                        ),
+                        React.createElement(
+                            "div",
+                            { className: "ui tab padded basic segment", "data-tab": "sub-second" },
+                            "second"
+                        ),
+                        React.createElement(
+                            "div",
+                            { className: "ui tab padded basic segment", "data-tab": "sub-third" },
+                            "third"
+                        )
                     )
                 )
             ),

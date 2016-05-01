@@ -1,5 +1,5 @@
-from flask import g
-from .base import *
+from .base import create_table, select_query
+from .base import insert_query, cached
 
 
 name = "announcements"
@@ -12,22 +12,21 @@ def create(conn):
                 description varchar(10000) not null,
                 timestamp datetime not null
             )"""
-    return create_table(conn or g.conn, query)
+    return create_table(conn, query)
 
 
-@cached('all_announcements')
-def all():
-    query = "select * from %s order by timestamp desc" % name 
-    return select_query(g.conn, query)
+def all(conn):
+    query = "select * from %s order by timestamp desc" % name
+    return select_query(conn, query)
 
 
-def nth_page(n=1, pgsz=5):
+def nth_page(conn, n=1, pgsz=5):
     query = """select * from %s order by timestamp desc
-               limit %%s offset %%s""" % name 
-    return select_query(g.conn, query, (pgsz, pgsz*(n-1)))
+               limit %%s offset %%s""" % name
+    return select_query(conn, query, (pgsz, pgsz*(n-1)))
 
 
-def add(sub, desc, time):
-    query = """insert into %s (subject, description, timestamp) 
-                values (%%s, %%s, %%s)""" % name 
-    return insert_query(g.conn, query, (sub, desc, time))
+def add(conn, sub, desc, time):
+    query = """insert into %s (subject, description, timestamp)
+                values (%%s, %%s, %%s)""" % name
+    return insert_query(conn, query, (sub, desc, time))

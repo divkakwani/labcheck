@@ -8,17 +8,17 @@ var Student = React.createClass({
         return React.createElement(
             "div",
             null,
-            React.createElement(TopMenu, null),
+            React.createElement(TopMenu, { name: "Divyanshu" }),
             React.createElement(
                 "div",
                 { className: "ui container", style: { marginTop: "3em", minHeight: "400px;" } },
                 React.createElement(
                     "div",
-                    { className: "ui secondary menu grid" },
+                    { className: "ui blue secondary compact stackable menu" },
                     React.createElement(
                         "a",
                         { className: "item active", "data-tab": "first" },
-                        "Submit a Program"
+                        "Programming Assignments"
                     ),
                     React.createElement(
                         "a",
@@ -43,7 +43,7 @@ var Student = React.createClass({
                 ),
                 React.createElement(
                     "div",
-                    { style: { maxWidth: "500px" } },
+                    null,
                     React.createElement(
                         "div",
                         { className: "ui active tab padded basic segment", "data-tab": "first" },
@@ -55,12 +55,14 @@ var Student = React.createClass({
                                 { className: "inline field" },
                                 React.createElement(
                                     "label",
-                                    { style: { width: "100px" } },
+                                    { className: "ui header", style: { width: "100px" } },
                                     "Program ID "
                                 ),
                                 React.createElement(
                                     "select",
-                                    { className: "ui dropdown" },
+                                    { id: "pcode", className: "ui dropdown", onChange: function () {
+                                            $("pdisp").attr("pcode", $("#pcode").val());
+                                        } },
                                     React.createElement(
                                         "option",
                                         { value: "" },
@@ -86,15 +88,31 @@ var Student = React.createClass({
                             React.createElement("div", { className: "ui hidden divider" }),
                             React.createElement(
                                 "div",
+                                { className: "ui message" },
+                                React.createElement(
+                                    "h4",
+                                    { className: "ui blue header" },
+                                    "Program Statement"
+                                ),
+                                React.createElement(Program, { id: "pdisp", ccode: "2C3", pcode: "p1" })
+                            ),
+                            React.createElement("div", { className: "ui hidden divider" }),
+                            React.createElement(
+                                "div",
                                 { className: "inline field" },
                                 React.createElement(
                                     "label",
-                                    { style: { width: "100px" } },
+                                    { style: { width: "100px" }, className: "ui header" },
                                     "Upload your file"
                                 ),
                                 React.createElement("input", { type: "file" })
                             ),
                             React.createElement("div", { className: "ui hidden divider" }),
+                            React.createElement(
+                                "div",
+                                { className: "ui blue message" },
+                                "Note that you can make atmost 10 submissions per day"
+                            ),
                             React.createElement(
                                 "button",
                                 { className: "ui blue button" },

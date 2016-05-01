@@ -2,14 +2,30 @@ from flask import g
 from .base import *
 
 
-table_name = "handouts"
+name = "handouts"
 
 
-def all():
+def create(conn):
+    query = """
+            create table handouts (
+                id bigint primary key auto_increment,
+                name varchar(100) not null,
+                description varchar(10000),
+                url varchar(1000) not null
+            );
+            """
+    return create_table(conn, query)
+
+
+def all(conn):
     query = "select * from handouts"
-    return select_query(g.conn, query)
+    return select_query(conn, query)
 
 
-def add(cls, sub, path, desc):
-    query = "insert into handouts values (%s, %s, %s)"
-    return insert_query(g.conn, query, (sub, path, desc))
+def get(id):
+    query = "select * "
+
+
+def add(sub, desc, path):
+    query = "insert into handouts (name, description, url) values (%s, %s, %s)"
+    return insert_query(g.conn, query, (sub, desc, path))

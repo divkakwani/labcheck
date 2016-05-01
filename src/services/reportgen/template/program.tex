@@ -1,13 +1,18 @@
 
 \BLOCK{ for program in programs }
 
-{\large \VAR{program.title}  } \\[0.5in]
+{\large \VAR{program[1]}  } \\[0.5in]
 \begin{flushleft}
-    \VAR{program.stmt}\\[1in]
-
-\end{flushleft}
 \begin{lstlisting}
-    \VAR{program.solution}
+    \VAR{program[2]}
+\end{lstlisting}\\[1in]
+\end{flushleft}
+
+
+\begin{lstlisting}
+    \BLOCK{ if submissions[program[0]-1] }
+    \VAR{submissions[program[0]-1][2]}
+    \BLOCK{ endif }
 \end{lstlisting}
 \pagebreak
 

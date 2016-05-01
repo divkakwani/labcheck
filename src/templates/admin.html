@@ -26,7 +26,7 @@
     <div id="topmenu"></div>
 
     <div class="ui container" style="margin-top: 3em; min-height: 800px;">
-        <div class="ui secondary menu grid">
+        <div class="ui blue secondary pointing compact menu grid">
             <a class="item active" data-tab="first">Announcements</a>
             <a class="item" data-tab="second">Program Database</a>
             <a class="item" data-tab="third">Student Report</a>
@@ -36,63 +36,25 @@
         </div>
 
         <div class="ui active tab padded basic segment" data-tab="first">
-            <h4 class="ui blue header"> Make an announcement </h4>
-            <form class="ui form" action="/dbm/announcements" method="post">
-                <div class="ui field">
-                    <label>Subject: </label>
-                    <input class="ui text" name="sub" type="text"/>
-                </div>
-                <div class="ui field">
-                    <label>Description: </label>
-                    <textarea name="desc"></textarea>
-                </div>
-                <button class="ui blue button">Post the announcement</button>
-            </form>
+            <div id="announcementsubmit"></div>
         </div>
 
 
         <div class="ui tab padded basic segment" data-tab="second">
-            <div class="ui blue secondary pointing compact menu">
-                <div class="item" data-tab="sub0-second">Programs</div>
-                <div class="item" data-tab="sub1-second">Tests</div>
+            <div class="ui secondary compact menu">
+                <div class="blue item" data-tab="sub0-second">Programs</div>
+                <div class="blue item" data-tab="sub1-second">Tests</div>
             </div>
             <div class="ui active tab padded basic segment" data-tab="sub0-first">
                 <i>(Select one of the above options.)</i>
             </div>
             <div class="ui tab padded basic segment" data-tab="sub0-second">
-                <table class="ui blue celled striped table">
-                    <thead>
-                        <tr>
-                            <th> </th>
-                            <th> Program ID </th>
-                            <th>Program Name</th>
-                            <th>Description</th>
-                            <th>Statement</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
+                <div id="programtable"></div>
             </div>
         </div>
 
         <div class="ui tab padded basic segment" data-tab="third">
-            <h4 class="ui blue header"> Search for a specific student</h4>
-            <div class="ui segment" style="max-width: 350px">
-                <form class="ui form">
-                    <div class="field">
-                        <label>USN</label>
-                        <div class="ui labeled input">
-                            <div class="ui label">1RV13IS</div>
-                            <input class="ui text" type="text"/>
-                        </div>
-                    </div>
-                    <button class="ui blue button">Get report</button>
-                    <button class="ui blue button">Generate record*</button>
-                </form>
-            </div>
-            <div class="ui horizontal divider">OR</div>
-            <h4 class="ui blue header"><a>Get all the stuents' report</a></h4>
+            <div id="getstudentstatus"></div>
         </div>
 
         <div class="ui tab padded basic segment" data-tab="fourth">
@@ -104,7 +66,7 @@
             <div id="handouts"></div>
             <div class="ui divider"></div>
             <h4 class="ui blue header">Add handouts</h4>
-            <form class="ui form" method="post" encType="multipart/form-data" action="/admin">
+            <form class="ui form" method="post" encType="multipart/form-data" action="/dbm/12IS35/handouts">
                 <div class="field">
                     <label>Name</label>
                     <input type="text" class="ui text" name="name"/>
@@ -143,19 +105,26 @@
 
     <script src="{{ url_for('static', filename='react/react.js') }}"></script>
     <script src="{{ url_for('static', filename='react/react-dom.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 
     <script type="text/javascript" src="{{ url_for('static', filename='components/Footer/footer.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='components/StudentDashboard/studentdashboard.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='components/TopMenu/topmenu.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='components/AnnouncementSubmit/announcementsubmit.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='components/ProgramTable/programtable.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='components/Handouts/handouts.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='components/TabbedDisplayBox/tabbeddisplaybox.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='views/Admin/admin.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='components/StudentStatus/studentstatus.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='components/GetStudentStatus/getstudentstatus.js') }}"></script>
 
 
     <script>
         ReactDOM.render(React.createElement(TopMenu, {usn: "{{usn}}", coursecode: "{{coursecode}}" }), document.getElementById('topmenu'));
+        ReactDOM.render(React.createElement(AnnouncementSubmit, null), document.getElementById('announcementsubmit'));
         ReactDOM.render(React.createElement(Handouts, null), document.getElementById('handouts'));
         ReactDOM.render(React.createElement(Footer, null), document.getElementById('footer'));
+        ReactDOM.render(React.createElement(ProgramTable, null), document.getElementById('programtable'));
+        ReactDOM.render(React.createElement(GetStudentStatus, null), document.getElementById('getstudentstatus'));
+
     </script>
 
 </body>
